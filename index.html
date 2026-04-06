@@ -3,138 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEDDUA | Official Clan Site</title>
+    <title>BEDDUA | Hiyerarşinin Merkezi</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #ff0000;
-            --bg: #050505;
-            --surface: #0f0f0f;
-            --text: #ffffff;
-            --border: rgba(255, 0, 0, 0.15);
-        }
-
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body {
-            margin: 0;
-            background-color: var(--bg);
-            background-image: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* --- NAVBAR --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: rgba(5, 5, 5, 0.95);
-            border-bottom: 1px solid var(--border);
-            position: sticky; top: 0; z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; color: var(--primary); letter-spacing: 3px; text-decoration: none; }
-
-        nav .links { display: flex; gap: 30px; }
-        nav a { text-decoration: none; color: #888; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
-
-        /* --- HERO --- */
-        .hero { padding: 80px 8%; display: flex; gap: 50px; min-height: 90vh; align-items: center; }
-        .hero-content { flex: 1; }
-        .hero-content h1 { font-family: 'Syncopate', sans-serif; font-size: 4.5rem; margin: 0; line-height: 0.9; text-transform: uppercase; }
-        .hero-content h1 span { color: var(--primary); display: block; }
+        :root { --primary: #ff0000; --bg: #050505; --surface: #0f0f0f; --text: #ffffff; --border: rgba(255, 0, 0, 0.2); }
+        * { box-sizing: border-box; scroll-behavior: smooth; cursor: crosshair; }
         
-        /* --- SIDEBAR (DISCORD) --- */
-        .sidebar { width: 400px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 10px; }
+        body { 
+            margin: 0; background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif;
+            background-image: radial-gradient(circle at 50% 50%, #1a0000 0%, #050505 100%);
+            overflow-x: hidden;
+        }
 
-        /* --- SECTION GENEL --- */
-        section.content-sec { padding: 100px 8%; border-top: 1px solid var(--border); }
-        h2.sec-title { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 50px; }
+        /* AKIŞKAN ARKA PLAN (APPLE STYLE) */
+        .ambient-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255,0,0,0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255,0,0,0.03) 0%, transparent 40%);
+            z-index: -1; pointer-events: none;
+        }
 
-        /* --- KURALLAR KUTULARI --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: var(--surface); padding: 30px; border-radius: 15px; border: 1px solid var(--border); }
-        .card h3 { color: var(--primary); margin-top: 0; }
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 8%; background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 1000;
+        }
 
-        /* --- BUTONLAR --- */
-        .btn { padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 900; text-transform: uppercase; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-outline { border: 1px solid #333; color: #fff; }
+        .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; color: var(--primary); letter-spacing: 5px; text-decoration: none; font-size: 1.6rem; text-shadow: 0 0 15px rgba(255,0,0,0.5); }
 
-        @media (max-width: 1100px) { .hero { flex-direction: column; text-align: center; } .sidebar { width: 100%; } }
+        .hero { padding: 100px 8%; display: flex; gap: 60px; min-height: 90vh; align-items: center; }
+        .hero-content { flex: 1; }
+        .hero-content h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(3rem, 7vw, 6rem); margin: 0; line-height: 0.85; letter-spacing: -3px; }
+        .hero-content h1 span { color: var(--primary); display: block; filter: drop-shadow(0 0 20px rgba(255,0,0,0.4)); }
+        
+        .hero-content p { color: #888; font-size: 1.2rem; margin: 40px 0; max-width: 550px; border-left: 3px solid var(--primary); padding-left: 20px; font-style: italic; }
+
+        /* SAĞ PANEL: SİSTEM EKRANI GÖRÜNÜMÜ */
+        .system-panel {
+            width: 420px; height: 550px; background: rgba(15, 15, 15, 0.7);
+            border: 1px solid var(--border); border-radius: 5px; position: relative;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            backdrop-filter: blur(10px); box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+
+        .system-panel::before { content: 'SYSTEM STATUS: AWAITING UPLINK'; position: absolute; top: 15px; left: 20px; font-size: 0.6rem; color: var(--primary); letter-spacing: 2px; font-weight: 900; }
+
+        /* SECTIONS */
+        section.content-sec { padding: 120px 8%; border-top: 1px solid rgba(255,0,0,0.1); }
+        h2.sec-title { font-family: 'Syncopate', sans-serif; font-size: 2.2rem; color: #fff; margin-bottom: 60px; text-align: center; }
+        h2.sec-title span { color: var(--primary); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: rgba(20, 20, 20, 0.4); padding: 40px; border-radius: 0; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .card:hover { border-color: var(--primary); background: rgba(255,0,0,0.02); transform: scale(1.02); }
+        .card h3 { color: var(--primary); margin-top: 0; font-family: 'Syncopate'; font-size: 0.9rem; letter-spacing: 2px; }
+        .card p { color: #777; font-size: 0.95rem; line-height: 1.7; }
+
+        .btn { padding: 20px 40px; border-radius: 0; text-decoration: none; font-weight: 900; text-transform: uppercase; display: inline-block; transition: 0.3s; border: none; cursor: pointer; letter-spacing: 3px; font-size: 0.8rem; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 30px rgba(255,0,0,0.3); }
+        .btn-outline { border: 1px solid #333; color: #fff; margin-left: 15px; }
+        .btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
+
+        @media (max-width: 1100px) { .hero { flex-direction: column; text-align: center; } .system-panel { width: 100%; } }
     </style>
 </head>
 <body>
 
+    <div class="ambient-bg"></div>
+
     <nav>
         <a href="#" class="logo">BEDDUA</a>
         <div class="links">
-            <a href="#hero">Ana Sayfa</a>
-            <a href="#kurallar">Kurallar</a>
-            <a href="#siralama">Sıralama</a>
-            <a href="#destek">Destek</a>
+            <a href="#hero">ÜS</a>
+            <a href="#kurallar">DOKTRİN</a>
+            <a href="#siralama">HİYERARŞİ</a>
+            <a href="#destek">İRTİBAT</a>
         </div>
-        <a href="https://discord.gg/pUyKMKUM" target="_blank" class="btn btn-outline" style="padding: 10px 20px;">KATIL</a>
+        <a href="https://discord.gg/pUyKMKUM" target="_blank" class="btn-primary" style="padding: 10px 25px; font-size: 0.7rem;">GİRİŞ YAP</a>
     </nav>
 
     <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>SIKI<span>YÖNETİM</span></h1>
-            <p style="color: #666; margin: 30px 0;">Minecraft dünyasının en disiplinli klanına hoş geldin. Aşağı kaydırarak kurallarımızı öğrenebilirsin.</p>
-            <div style="display: flex; gap: 15px;">
-                <a href="#kurallar" class="btn btn-primary">KURALLARI GÖR</a>
-                <a href="#destek" class="btn btn-outline">YARDIM AL</a>
+            <h1>SON<span>BAŞLANGIÇ</span></h1>
+            <p>"Burada dostluklar kılıçların gölgesinde kurulur. BEDDUA, sadece en sadık olanların barınabildiği kutsal bir hiyerarşidir. Sen sadece bir oyuncu değil, bu davanın bir parçasısın."</p>
+            <div style="margin-top: 50px;">
+                <a href="#kurallar" class="btn btn-primary">YEMİNİ ET</a>
+                <a href="#destek" class="btn btn-outline">DESTEK İSTE</a>
             </div>
         </div>
 
-        <div class="sidebar">
-            <div style="padding: 10px; font-weight: 900; font-size: 0.7rem; color: #444; letter-spacing: 2px;">CANLI SUNUCU</div>
-            <iframe src="https://discord.com/widget?id=1457837923561898049&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <div class="system-panel">
+            <div style="font-size: 4rem; color: var(--primary); font-weight: 900; opacity: 0.3; animation: pulse 2s infinite;">B</div>
+            <p style="color: #444; font-family: monospace; font-size: 0.7rem; margin-top: 20px;">[ WIDGET_LINK: WAITING FOR PERMISSION ]</p>
+            <p style="color: #666; font-size: 0.9rem; text-align: center; padding: 0 50px; margin-top: 10px;">Kurucu onayı bekleniyor. Bağlantı kurulduğunda tüm klan üyeleri burada listelenecektir.</p>
         </div>
     </section>
 
     <section class="content-sec" id="kurallar">
-        <h2 class="sec-title">KLAN KURALLARI</h2>
+        <h2 class="sec-title">KLAN <span>DOKTRİNİ</span></h2>
         <div class="grid">
             <div class="card">
-                <h3>01. Saygı</h3>
-                <p>Üstlerine ve klan arkadaşlarına karşı saygısızlık ihraç sebebidir.</p>
+                <h3>SADAKAT VE SIR</h3>
+                <p>Klanın içindeki ses, dışarıda fısıltı dahi olamaz. İhanetin bedeli sadece ihraç değil, sonsuz bir kara listedir.</p>
             </div>
             <div class="card">
-                <h3>02. Disiplin</h3>
-                <p>Savaş ve baskın anında komutlara kesin itaat edilir.</p>
+                <h3>KOŞULSUZ İTAAT</h3>
+                <p>Üst rütbelinin emri, senin kararlarından üstündür. Savaş alanında tartışma olmaz, sadece icraat olur.</p>
             </div>
             <div class="card">
-                <h3>03. Gizlilik</h3>
-                <p>Klan içi bilgiler asla dışarı sızdırılamaz.</p>
+                <h3>BİRLİKTE YÜKSELİŞ</h3>
+                <p>Birimiz düştüğünde hepimiz diz çökeriz. BEDDUA sancağı altında herkes birbirinin kalkanıdır.</p>
             </div>
         </div>
     </section>
 
-    <section class="content-sec" id="siralama" style="background: rgba(255,0,0,0.02);">
-        <h2 class="sec-title">KLAN SIRALAMASI</h2>
-        <div class="card" style="text-align: center; padding: 100px;">
-            <p style="color: #888; font-size: 1.5rem;">Sıralama verileri ProBot üzerinden çekiliyor... Çok yakında burada!</p>
+    <section class="content-sec" id="destek" style="background: rgba(255,0,0,0.02);">
+        <h2 class="sec-title">İRTİBAT <span>MERKEZİ</span></h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p style="color: #888; font-size: 1.3rem; margin-bottom: 40px;">"Bir sorun mu var? Ya da gücümüze güç mü katmak istiyorsun? Biz buradayız."</p>
+            <a href="https://discord.gg/pUyKMKUM" target="_blank" class="btn btn-primary">TICKET AÇ / BİZE ULAŞ</a>
         </div>
     </section>
 
-    <section class="content-sec" id="destek">
-        <h2 class="sec-title">DESTEK MERKEZİ</h2>
-        <div class="grid">
-            <div class="card" style="grid-column: span 2;">
-                <h3>Bir Sorunun mu Var?</h3>
-                <p>Klan içi teknik sorunlar veya şikayetler için Discord üzerinden "Destek Talebi" açabilirsin. Site üzerinden hızlı mesaj sistemi yakında eklenecek.</p>
-                <a href="https://discord.gg/pUyKMKUM" target="_blank" class="btn btn-primary">TICKET AÇ</a>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 50px; color: #333; font-size: 0.8rem; border-top: 1px solid var(--border);">
-        &copy; 2026 BEDDUA CLAN - ALL RIGHTS RESERVED.
+    <footer style="text-align: center; padding: 60px; color: #222; font-size: 0.65rem; letter-spacing: 4px; border-top: 1px solid var(--border);">
+        &copy; 2026 BEDDUA | CODED BY ROLEZ | HIYERARSIYE SELAM OLSUN.
     </footer>
 
+    <script>
+        // Sayfa kaydıkça bazı elementleri canlandırmak için ufak bir touch
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if(window.scrollY > 50) nav.style.background = 'rgba(5,5,5,0.95)';
+            else nav.style.background = 'rgba(5,5,5,0.8)';
+        });
+    </script>
 </body>
 </html>
