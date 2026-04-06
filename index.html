@@ -14,29 +14,58 @@
             --card: #0c0c0c;
         }
 
-        /* --- 1. ÖZEL GİRİŞ ANİMASYONU (BOZULMAYAN HALİ) --- */
+        /* --- ✨ 1. YENİ SİNEMATİK AURA ANİMASYONU ✨ --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 9999;
-            transition: opacity 1s ease, visibility 1s;
+            background: #000; display: flex; justify-content: center; align-items: center;
+            z-index: 9999;
+            transition: opacity 1.2s cubic-bezier(0.645, 0.045, 0.355, 1), visibility 1.2s;
         }
-        .typewriter {
-            font-family: 'Inter'; font-size: 14px; color: #444; letter-spacing: 5px;
-            text-transform: uppercase; margin-bottom: 20px; overflow: hidden;
-            white-space: nowrap; border-right: 2px solid var(--red); width: 0;
-            animation: typing 1.5s steps(30, end) forwards, blink 0.5s step-end infinite;
-        }
-        .loader-title {
-            font-family: 'Syncopate'; font-size: 40px; letter-spacing: 20px; color: #fff;
-            opacity: 0; transform: scale(0.8); animation: revealTitle 1s ease 1.5s forwards;
-        }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--red) } }
-        @keyframes revealTitle { to { opacity: 1; transform: scale(1); text-shadow: 0 0 30px var(--red); } }
-        .preloader-hidden { opacity: 0; visibility: hidden; }
 
-        /* --- GENEL TASARIM --- */
+        .loader-content { position: relative; text-align: center; }
+
+        /* Ortadaki Parlayan B Harfi */
+        .big-b {
+            font-family: 'Syncopate';
+            font-size: 150px;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(255, 0, 0, 0.5);
+            opacity: 0;
+            animation: bReveal 3s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* B Harfinin Arkasındaki Kırmızı Aura/Duman */
+        .big-b::after {
+            content: 'B';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            color: var(--red);
+            opacity: 0;
+            filter: blur(20px);
+            animation: bAura 3s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+            z-index: 1;
+        }
+
+        @keyframes bReveal {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); -webkit-text-stroke: 2px rgba(255, 0, 0, 0); }
+            30% { opacity: 1; transform: scale(1.05) translateY(0); -webkit-text-stroke: 2px rgba(255, 0, 0, 0.5); }
+            70% { opacity: 1; transform: scale(1) translateY(0); -webkit-text-stroke: 2px rgba(255, 0, 0, 0.8); }
+            100% { opacity: 0; transform: scale(1.1) translateY(0); -webkit-text-stroke: 2px rgba(255, 0, 0, 0); }
+        }
+
+        @keyframes bAura {
+            0% { opacity: 0; filter: blur(30px); }
+            30% { opacity: 0.8; filter: blur(20px); }
+            70% { opacity: 1; filter: blur(15px); text-shadow: 0 0 50px var(--red); }
+            100% { opacity: 0; filter: blur(40px); }
+        }
+
+        .preloader-hidden { opacity: 0; visibility: hidden; }
+        /* ------------------------------------------- */
+
+        /* --- GENEL TASARIM (BOZULMAYAN HALİ) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
@@ -54,13 +83,15 @@
             height: 100vh; display: flex; flex-direction: column; justify-content: center;
             align-items: center; text-align: center;
             background: radial-gradient(circle, #1a0000 0%, #050505 100%);
+            padding: 0 5%;
         }
         .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 12vw, 120px); letter-spacing: 20px; font-weight: 700; text-shadow: 0 0 50px rgba(255, 0, 0, 0.3); }
         .hero p { color: #444; letter-spacing: 8px; margin-top: 10px; font-size: 14px; text-transform: uppercase; }
 
         .social-btns { display: flex; gap: 20px; margin-top: 40px; }
         .s-btn { padding: 15px 35px; border: 1px solid #333; color: white; text-decoration: none; font-size: 13px; transition: 0.3s; font-weight: bold; letter-spacing: 2px; }
-        .s-btn:hover { border-color: var(--red); background: #110000; color: var(--red); }
+        .s-btn:hover { border-color: var(--red); background: #110000; color: var(--red); box-shadow: 0 0 20px rgba(255,0,0,0.1); }
+        .s-btn i { margin-right: 10px; }
 
         .container { padding: 100px 10%; }
         h2 { font-family: 'Syncopate'; text-align: center; margin-bottom: 60px; color: var(--red); font-size: 28px; letter-spacing: 10px; }
@@ -89,15 +120,15 @@
 
     <div id="preloader">
         <div class="loader-content">
-            <div class="typewriter">Sarsılmaz Sadakat, Mutlak Güç...</div>
-            <div class="loader-title">BED<span>DUA</span></div>
+            <div class="big-b">B</div>
         </div>
     </div>
 
     <nav>
         <div style="font-family: 'Syncopate'; color: var(--red); font-weight: bold; letter-spacing: 4px; font-size: 18px;">BEDDUA.</div>
         <div class="nav-links">
-            <a href="#home">Ana Menü</a> <a href="#founders">Ekip</a>
+            <a href="#home">Ana Menü</a>
+            <a href="#founders">Ekip</a>
             <a href="#rules">Kurallar</a>
             <a href="#support">Destek</a>
         </div>
@@ -147,15 +178,17 @@
     <footer>BEDDUA CLAN &copy; 2026</footer>
 
     <script>
+        // 5. YENİ ANİMASYON ZAMANLAMASI
         window.addEventListener('load', () => {
-            setTimeout(() => { document.getElementById('preloader').classList.add('preloader-hidden'); }, 3500);
+            // Animasyon 3 saniye sürüyor, 3.2 saniye sonra siteyi açıyoruz
+            setTimeout(() => { document.getElementById('preloader').classList.add('preloader-hidden'); }, 3200);
         });
 
         async function sendToDiscord() {
             const webhookURL = "https://discord.com/api/webhooks/1490661782291746877/BeRBuYuXDkU94LFQSI-mqEw9BOau0Lcv6nGku6R_yODg_7AZ7Jt2ecIq3IFK8UPJlMzG";
             const name = document.getElementById('dcName').value;
             const message = document.getElementById('dcMessage').value;
-            if(!name || !message) return alert("Boş bırakma!");
+            if(!name || !message) return alert("Boş bırakma kanka!");
             await fetch(webhookURL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
