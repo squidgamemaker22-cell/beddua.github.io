@@ -18,12 +18,12 @@
         body {
             margin: 0;
             background-color: var(--bg);
+            background-image: radial-gradient(circle at center, #1a0505 0%, #080808 100%);
             color: var(--text);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
         }
 
-        /* --- ÜST MENÜ (NAVBAR) --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -63,10 +63,8 @@
 
         nav a:hover {
             color: var(--primary);
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
-        /* --- ANA BÖLÜM (HERO) --- */
         .hero {
             padding: 100px 8%;
             display: flex;
@@ -100,7 +98,6 @@
             margin: 30px 0;
         }
 
-        /* --- DISCORD PANELİ (SAĞ TARAF) --- */
         .sidebar {
             width: 400px;
             background: var(--surface);
@@ -121,7 +118,6 @@
             justify-content: space-between;
         }
 
-        /* --- BUTONLAR --- */
         .cta-group {
             display: flex;
             gap: 20px;
@@ -135,6 +131,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -157,7 +154,6 @@
             background: rgba(255,0,0,0.05);
         }
 
-        /* Mobil Ayarı */
         @media (max-width: 1100px) {
             .hero { flex-direction: column; text-align: center; align-items: center; }
             .hero-content h1 { font-size: 3.5rem; }
@@ -176,25 +172,25 @@
             <a href="#">İletişim</a>
         </div>
         <div>
-            <a href="https://discord.gg/DAVET_LINKI" class="btn btn-outline" style="padding: 10px 20px;">KATIL</a>
+            <a href="https://discord.gg/pUyKMKUM" target="_blank" class="btn btn-outline" style="padding: 10px 20px;">KATIL</a>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
             <h1>SIKI<span>YÖNETİM</span></h1>
-            <p>Arkadaşlık bitti, hiyerarşi başladı. Minecraft'ın en sert topluluğu BEDDUA klanına hoş geldin kurucu.</p>
+            <p>Birlikte oynayın. Beddua, arkadaşlık ve eğlencenin ön planda olduğu bir Minecraft klanıdır. Sıkıyönetime hoş geldin.</p>
             
             <div class="cta-group">
-                <a href="#" class="btn btn-primary">KLANA BAŞVUR</a>
+                <a href="https://discord.gg/pUyKMKUM" target="_blank" class="btn btn-primary">KLANA BAŞVUR</a>
                 <a href="#" class="btn btn-outline">KURALLARI OKU</a>
             </div>
         </div>
 
         <div class="sidebar">
             <div class="discord-header">
-                <span>CANLI SUNUCU DURUMU</span>
-                <span style="color: green;">● ONLINE</span>
+                <span>CANLI KLAN ÜYELERİ</span>
+                <span style="color: #2ecc71;">● ONLINE</span>
             </div>
             <iframe src="https://discord.com/widget?id=1457837923561898049&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </div>
