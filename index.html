@@ -3,119 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEDDUA | ASKERİ ÜS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <title>BEDDUA | LIFESTEAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #ff0000; --bg: #030303; --surface: #0a0a0a; --text: #eee; }
-        * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
+        :root { --primary: #ff0000; --bg: #000000; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            background-color: var(--bg); color: var(--text); font-family: 'Oswald', sans-serif;
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://img.freepik.com/free-photo/dark-grunge-style-texture-background_23-2148973711.jpg');
-            background-attachment: fixed;
+            background-color: var(--bg); color: #fff; font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* NAVBAR - DAHA AGRESİF */
+        /* ARKA PLAN EFEKTİ */
+        .bg-glow {
+            position: fixed; top: 50%; left: 50%; width: 100vw; height: 100vh;
+            background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%); z-index: -1;
+        }
+
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: rgba(0, 0, 0, 0.9);
-            border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 1000;
+            padding: 30px 8%; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo { font-family: 'Syncopate', sans-serif; color: var(--primary); letter-spacing: 5px; text-decoration: none; font-size: 1.8rem; }
+        .logo { font-family: 'Syncopate', sans-serif; color: var(--primary); font-size: 1.5rem; text-decoration: none; letter-spacing: 5px; }
 
-        /* HERO - SAVAŞ ALANI */
-        .hero { 
-            height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
+        .hero {
+            height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
 
-        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(3rem, 10vw, 8rem); line-height: 1; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); text-shadow: 0 0 30px rgba(255,0,0,0.6); }
-        .hero p { font-size: 1.5rem; color: #aaa; text-transform: uppercase; letter-spacing: 5px; max-width: 800px; }
+        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(4rem, 12vw, 10rem); line-height: 0.8; margin-bottom: 20px; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.2rem; color: #555; text-transform: uppercase; letter-spacing: 10px; }
 
-        /* KLAN KARTLARI - DAHA DOLU DURUŞ */
-        .content-section { padding: 80px 5%; }
-        .section-header { border-left: 10px solid var(--primary); padding-left: 20px; margin-bottom: 40px; }
-        .section-header h2 { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; text-transform: uppercase; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { 
-            background: var(--surface); border: 1px solid #222; padding: 40px; 
-            position: relative; transition: 0.3s;
+        .join-section { padding: 100px 5%; text-align: center; }
+        
+        .btn-join {
+            display: inline-block; padding: 25px 80px; background: var(--primary); color: white;
+            text-decoration: none; font-size: 1.2rem; font-weight: 900; text-transform: uppercase;
+            transition: 0.2s; border: 2px solid var(--primary);
         }
-        .card:hover { border-color: var(--primary); background: #0f0000; transform: skew(-2deg); }
-        .card h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; text-transform: uppercase; }
-        .card p { color: #888; font-family: 'Inter', sans-serif; line-height: 1.6; }
 
-        /* KATIL BUTONU - DEVASA */
-        .join-btn {
-            display: inline-block; padding: 25px 60px; background: var(--primary); color: white;
-            text-decoration: none; font-size: 1.5rem; font-weight: 900; text-transform: uppercase;
-            margin-top: 50px; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
-            transition: 0.3s;
+        .btn-join:hover { background: transparent; color: var(--primary); }
+
+        .info-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; padding: 50px 8%;
         }
-        .join-btn:hover { background: white; color: var(--primary); transform: scale(1.1); }
 
-        /* FOOTER */
-        footer { text-align: center; padding: 50px; border-top: 1px solid #222; margin-top: 100px; color: #444; }
+        .info-box {
+            background: #050505; border: 1px solid #111; padding: 50px; text-align: center;
+        }
+
+        .info-box h3 { color: var(--primary); font-family: 'Syncopate'; font-size: 0.8rem; margin-bottom: 15px; }
+        .info-box p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+
+        footer { text-align: center; padding: 50px; color: #222; font-size: 0.7rem; letter-spacing: 5px; }
     </style>
 </head>
 <body>
 
+    <div class="bg-glow"></div>
+
     <nav>
         <a href="#" class="logo">BEDDUA</a>
-        <div style="display: flex; gap: 30px;">
-            <a href="#rules" style="color: white; text-decoration: none; font-weight: 700;">DOKTRİN</a>
-            <a href="#hierarchy" style="color: white; text-decoration: none; font-weight: 700;">HİYERARŞİ</a>
-            <a href="https://discord.gg/pUyKMKUM" style="color: var(--primary); text-decoration: none; font-weight: 900;">KATIL</a>
+        <div style="display: flex; gap: 40px;">
+            <a href="https://discord.gg/pUyKMKUM" target="_blank" style="color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 900;">DISCORD</a>
         </div>
     </nav>
 
     <section class="hero">
         <h1>BED<span>DUA</span></h1>
-        <p>HİYERARŞİYE İTAAT ET, YA DA YOK OL.</p>
-        <a href="https://discord.gg/pUyKMKUM" class="join-btn">SUNUCUYA ÇÖK</a>
-    </section>
-
-    <section class="content-section" id="rules">
-        <div class="section-header"><h2>KLAN YASALARI</h2></div>
-        <div class="grid">
-            <div class="card">
-                <h3>01. İHANETİN BEDELİ</h3>
-                <p>Klan içi bilgiyi dışarı taşıyanın yolu BEDDUA ile sonsuza dek kesilir. Geri dönüş yoktur.</p>
-            </div>
-            <div class="card">
-                <h3>02. SAVAŞ DİSİPLİNİ</h3>
-                <p>Baskın anında ses kanallarında mutlak sessizlik ve komuta zinciri uygulanır.</p>
-            </div>
-            <div class="card">
-                <h3>03. SADAKAT</h3>
-                <p>BEDDUA sancağı altındaki her üye, bir diğerinin kalkanıdır. Birlik bozulmaz.</p>
-            </div>
+        <p>LIFESTEAL CLAN</p>
+        <div style="margin-top: 50px;">
+            <a href="https://discord.gg/pUyKMKUM" class="btn-join">KATIL</a>
         </div>
     </section>
 
-    <section class="content-section" id="hierarchy">
-        <div class="section-header"><h2>KOMUTA ZİNCİRİ</h2></div>
-        <div class="grid">
-            <div class="card" style="border-left: 5px solid var(--primary);">
-                <h3>KURUCU & ŞEF</h3>
-                <p>Mutlak otorite. Son sözün sahibi.</p>
-            </div>
-            <div class="card">
-                <h3>YARDIMCI KURUCU</h3>
-                <p>Savaş koordinatörleri ve strateji uzmanları.</p>
-            </div>
-            <div class="card">
-                <h3>SAVAŞÇILAR</h3>
-                <p>BEDDUA'nın sahadaki keskin kılıçları.</p>
-            </div>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>PVP</h3>
+            <p>En iyi ekipman, en sert vuruş. Savaş alanında BEDDUA sancağı dalgalanır.</p>
         </div>
-    </section>
+        <div class="info-box">
+            <h3>LIFESTEAL</h3>
+            <p>Kalplerini al, güçlerini çal. Burada sadece hayatta kalanlar kural koyar.</p>
+        </div>
+        <div class="info-box">
+            <h3>KLAN</h3>
+            <p>Birlikte hareket et, birlikte kazan. Discord üzerinden 7/24 aktif sesli iletişim.</p>
+        </div>
+    </div>
 
     <footer>
-        DESIGNED BY ROLEZ | SİSTEM AKTİF 2026
+        DESIGNED BY ROLEZ
     </footer>
 
 </body>
