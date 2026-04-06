@@ -3,269 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beddua | Minecraft Clan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Beddua Klanı | Resmi Web Sitesi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-red: #cc0000;
-            --dark-bg: #0a0a0a;
-            --card-bg: #151515;
-            --text-gray: #b3b3b3;
+            --blood-red: #8b0000;
+            --pure-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: white;
             margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        /* --- Navbar --- */
+        /* Arka Plan Efekti */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
+            z-index: -1;
+        }
+
+        /* Navigasyon */
         nav {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 20px 50px;
+            padding: 25px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
-            border-bottom: 2px solid var(--primary-red);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,0,0,0.2);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-red);
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: var(--pure-red);
+            text-shadow: 0 0 10px var(--blood-red);
         }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 30px;
-            transition: 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-red);
-        }
-
-        /* --- Hero Section --- */
-        header {
-            height: 100vh;
+        /* Ana Sayfa (Hero) */
+        .hero {
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
         }
 
-        header h1 {
-            font-size: 80px;
-            margin-bottom: 10px;
+        .hero h1 {
+            font-size: clamp(60px, 10vw, 120px);
+            margin: 0;
             text-transform: uppercase;
-            letter-spacing: 10px;
-            text-shadow: 0 0 20px var(--primary-red);
+            letter-spacing: 15px;
+            background: linear-gradient(to bottom, #ffffff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        header p {
+        .hero p {
             font-size: 20px;
-            color: var(--text-gray);
+            color: #888;
+            margin-bottom: 30px;
         }
 
-        /* --- Founders Section --- */
-        .section {
-            padding: 80px 10%;
-            text-align: center;
-        }
-
-        .founders-grid {
+        /* Butonlar */
+        .btn-group {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            gap: 20px;
         }
 
-        .founder-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            border-bottom: 4px solid var(--primary-red);
-            width: 250px;
-            transition: 0.3s;
-        }
-
-        .founder-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .founder-card i {
-            font-size: 40px;
-            color: var(--primary-red);
-            margin-bottom: 15px;
-        }
-
-        /* --- Rules Section --- */
-        .rules-list {
-            text-align: left;
-            max-width: 600px;
-            margin: 40px auto;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-        }
-
-        .rules-list li {
-            margin-bottom: 15px;
-            list-style: none;
+        .btn {
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.4s;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
-        .rules-list li::before {
-            content: "💀";
-            margin-right: 15px;
+        .btn-dc { background: #5865F2; color: white; }
+        .btn-yt { background: #FF0000; color: white; }
+        .btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        /* Kurucular Kartları */
+        .section { padding: 100px 10%; text-align: center; }
+        
+        .founders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
 
-        /* --- Support System (Form) --- */
-        .support-form {
-            max-width: 500px;
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border: 1px solid #222;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover { border-color: var(--pure-red); }
+        .card.main-boss { border-color: var(--pure-red); box-shadow: 0 0 20px rgba(255,0,0,0.1); }
+
+        .card i { font-size: 50px; color: var(--pure-red); margin-bottom: 20px; }
+        .card h3 { margin: 10px 0; font-size: 24px; }
+        .card span { color: #666; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Kurallar */
+        .rules-box {
+            background: #0a0a0a;
+            border-left: 4px solid var(--pure-red);
+            padding: 40px;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Destek Formu */
+        .support-box {
+            max-width: 600px;
             margin: 0 auto;
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
+            padding: 40px;
         }
 
         input, textarea {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #222;
-            border: 1px solid #444;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #000;
+            border: 1px solid #333;
             color: white;
-            border-radius: 5px;
             box-sizing: border-box;
         }
 
-        button {
-            background: var(--primary-red);
+        .send-btn {
+            background: var(--pure-red);
             color: white;
             border: none;
-            padding: 15px 30px;
-            cursor: pointer;
+            padding: 15px;
             width: 100%;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: #990000;
-        }
-
-        /* --- Social Links --- */
-        .social-buttons {
-            margin-top: 30px;
-        }
-
-        .btn-social {
-            display: inline-block;
-            margin: 10px;
-            padding: 15px 25px;
-            text-decoration: none;
-            color: white;
-            border-radius: 5px;
+            cursor: pointer;
             font-weight: bold;
         }
 
-        .dc { background: #5865F2; }
-        .yt { background: #FF0000; }
-
-        footer {
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid #222;
-            color: var(--text-gray);
-        }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">BEDDUA</div>
-        <div class="nav-links">
-            <a href="#home">Ana Sayfa</a>
-            <a href="#founders">Kurucular</a>
-            <a href="#rules">Kurallar</a>
-            <a href="#support">Destek</a>
+        <div class="btn-group">
+            <a href="https://discord.gg/pUyKMKUM" class="btn btn-dc"><i class="fab fa-discord"></i> DC</a>
         </div>
     </nav>
 
-    <header id="home">
+    <div class="hero">
         <h1>BEDDUA</h1>
         <p>Gölge Gibi Gelir, Fırtına Gibi Gideriz.</p>
-        <div class="social-buttons">
-            <a href="https://discord.gg/pUyKMKUM" target="_blank" class="btn-social dc"><i class="fab fa-discord"></i> Discord</a>
-            <a href="https://www.youtube.com/@Musashi-Miyamato" target="_blank" class="btn-social yt"><i class="fab fa-youtube"></i> YouTube</a>
+        <div class="btn-group">
+            <a href="https://discord.gg/pUyKMKUM" class="btn btn-dc"><i class="fab fa-discord"></i> Discord'a Katıl</a>
+            <a href="https://www.youtube.com/@Musashi-Miyamato" class="btn btn-yt"><i class="fab fa-youtube"></i> YouTube</a>
         </div>
-    </header>
+    </div>
 
-    <section id="founders" class="section">
+    <section id="kurucular" class="section">
         <h2>KURUCULAR</h2>
-        <div class="founders-grid">
-            <div class="founder-card">
+        <div class="founders-container">
+            <div class="card main-boss">
                 <i class="fas fa-crown"></i>
-                <h3>rolezoffical</h3>
-                <p>Klan Lideri</p>
-            </div>
-            <div class="founder-card">
-                <i class="fas fa-user-shield"></i>
                 <h3>hsmynova_</h3>
-                <p>Kurucu Ortak</p>
+                <span>Asıl Kurucu & Lider</span>
             </div>
-            <div class="founder-card">
-                <i class="fas fa-fire"></i>
-                <h3>naqauel</h3>
-                <p>Kurucu Ortak</p>
+            <div class="card">
+                <i class="fas fa-handshake"></i>
+                <h3>rolezoffical</h3>
+                <span>Ortağım & Kurucu Ortak</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-shield"></i>
+                <h3>naqauel.</h3>
+                <span>Kurucu Ortak</span>
             </div>
         </div>
     </section>
 
-    <section id="rules" class="section" style="background-color: #0f0f0f;">
+    <section id="kurallar" class="section">
         <h2>KLAN KURALLARI</h2>
-        <div class="rules-list">
-            <li>Saygı her şeyden önce gelir.</li>
-            <li>Savaşta klan arkadaşını asla yalnız bırakma.</li>
-            <li>Küfür ve argo kullanımı kesinlikle yasaktır.</li>
-            <li>Klan içi hiyerarşiye uyum sağlanmalıdır.</li>
-            <li>Discord aktifliği zorunludur.</li>
+        <div class="rules-box">
+            <p>1. Saygı esastır, hiyerarşiye uyulur.</p>
+            <p>2. Savaş anında klan arkadaşı asla satılmaz.</p>
+            <p>3. Discord aktifliği "Baba" klan olmamızın şartıdır.</p>
+            <p>4. Gereksiz tartışma ve kaos klandan ihraç sebebidir.</p>
         </div>
     </section>
 
-    <section id="support" class="section">
+    <section id="destek" class="section">
         <h2>DESTEK SİSTEMİ</h2>
-        <p>Bir sorunun mu var? Hemen bize yaz.</p>
-        <div class="support-form">
-            <form id="contactForm">
-                <input type="text" placeholder="Discord Adın" required>
-                <input type="email" placeholder="E-posta Adresin" required>
-                <textarea rows="5" placeholder="Mesajın/Sorunun nedir?" required></textarea>
-                <button type="button" onclick="alert('Mesajın başarıyla gönderildi! (Şu an simülasyon modunda)')">Gönder</button>
-            </form>
+        <div class="support-box">
+            <input type="text" placeholder="Discord Kullanıcı Adın">
+            <textarea rows="5" placeholder="Şikayetin veya sorun nedir kanka?"></textarea>
+            <button class="send-btn" onclick="alert('Destek talebin hsmynova_ ve rolezoffical ekibine iletildi!')">TALEBİ GÖNDER</button>
         </div>
     </section>
 
-    <footer>
-        &copy; 2024 Beddua Clan - Tüm Hakları Saklıdır.
+    <footer style="padding: 50px; text-align: center; color: #444;">
+        &copy; 2026 BEDDUA CLAN - Tüm Hakları Saklıdır.
     </footer>
 
 </body>
