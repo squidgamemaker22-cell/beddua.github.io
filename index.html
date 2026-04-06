@@ -10,28 +10,24 @@
 
         :root {
             --red: #ff0000;
-            --dark-red: #800000;
             --bg: #050505;
             --card: #0c0c0c;
         }
 
-        /* --- MOUSE TAKİP EFEKTİ --- */
+        /* --- MOUSE GÖLGESİ --- */
         #cursor-blur {
             height: 350px; width: 350px;
-            background: radial-gradient(circle, rgba(255, 0, 0, 0.12) 0%, transparent 70%);
-            border-radius: 50%; position: fixed;
-            pointer-events: none; z-index: 1;
-            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 1; transform: translate(-50%, -50%);
         }
 
-        /* --- GELİŞMİŞ GİRİŞ ANİMASYONU --- */
+        /* --- GİRİŞ ANİMASYONU --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 9999;
             transition: opacity 1s ease, visibility 1s;
         }
-        .loader-content { text-align: center; }
         .typewriter {
             font-family: 'Inter'; font-size: 14px; color: #444; letter-spacing: 5px;
             text-transform: uppercase; margin-bottom: 20px; overflow: hidden;
@@ -67,40 +63,23 @@
         }
         .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 12vw, 120px); letter-spacing: 20px; font-weight: 700; text-shadow: 0 0 50px rgba(255, 0, 0, 0.3); }
 
+        /* BUTONLAR */
+        .social-btns { display: flex; gap: 20px; margin-top: 40px; }
+        .s-btn { 
+            padding: 15px 35px; border: 1px solid #333; color: white; 
+            text-decoration: none; font-size: 13px; transition: 0.3s; 
+            font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
+        }
+        .s-btn:hover { border-color: var(--red); background: #110000; color: var(--red); box-shadow: 0 0 20px rgba(255,0,0,0.1); }
+        .s-btn i { margin-right: 10px; }
+
         .container { padding: 100px 10%; position: relative; z-index: 2; }
         h2 { font-family: 'Syncopate'; text-align: center; margin-bottom: 60px; color: var(--red); font-size: 28px; letter-spacing: 10px; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { background: var(--card); padding: 50px 30px; border: 1px solid #151515; text-align: center; transition: 0.5s; }
-        .card:hover { border-color: var(--red); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(255,0,0,0.1); }
+        .card:hover { border-color: var(--red); transform: translateY(-10px); }
         .card i { font-size: 40px; color: var(--red); margin-bottom: 20px; }
-        .card h3 { font-size: 24px; letter-spacing: 2px; margin-bottom: 10px; }
-        .card span { color: var(--red); font-size: 11px; letter-spacing: 3px; font-weight: 800; text-transform: uppercase; }
-
-        /* YETKİLİ LİSTESİ */
-        .staff-section { margin-top: 80px; text-align: center; }
-        .staff-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
-        .staff-tag { 
-            background: #0a0a0a; border: 1px solid #1a1a1a; padding: 12px 25px; 
-            border-radius: 50px; font-size: 13px; letter-spacing: 2px; color: #888;
-            transition: 0.3s; cursor: default;
-        }
-        .staff-tag:hover { border-color: var(--red); color: #fff; background: #110000; transform: scale(1.05); }
-        .staff-tag b { color: var(--red); margin-right: 5px; }
-
-        .rules-list { max-width: 700px; margin: 0 auto; color: #aaa; }
-        .rule-item { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #111; font-size: 17px; }
-        .rule-item b { color: var(--red); margin-right: 15px; font-size: 20px; }
-
-        .signature-box { text-align: center; padding: 60px 10%; background: #030303; border-top: 1px solid #111; }
-        .signature-text { font-size: 18px; color: #555; font-style: italic; letter-spacing: 1px; }
-        .signature-text span { color: var(--red); font-weight: bold; }
-
-        .support-form { max-width: 600px; margin: 0 auto; }
-        input, textarea { background: #000; border: 1px solid #222; padding: 20px; color: white; width: 100%; margin-bottom: 15px; font-family: inherit; }
-        input:focus, textarea:focus { border-color: var(--red); outline: none; }
-        .btn-send { background: var(--red); color: white; border: none; padding: 20px; width: 100%; font-weight: 900; cursor: pointer; transition: 0.4s; letter-spacing: 3px; }
-        .btn-send:hover { background: #ff3333; letter-spacing: 6px; }
 
         footer { padding: 60px; text-align: center; font-size: 11px; color: #333; letter-spacing: 4px; border-top: 1px solid #111; }
     </style>
@@ -121,136 +100,73 @@
         <div class="nav-links">
             <a href="#home">Ana Menü</a>
             <a href="#founders">Ekip</a>
-            <a href="#rules">Kurallar</a>
             <a href="#support">Destek</a>
         </div>
     </nav>
 
     <section class="hero" id="home">
         <h1>BEDDUA</h1>
-        <p style="color: #444; letter-spacing: 8px; margin-top: 20px; font-size: 14px;">GÖLGE GİBİ GELİR, FIRTINA GİBİ GİDERİZ.</p>
-        <div style="margin-top: 40px;">
-            <a href="https://discord.gg/pGwxsx2Y" target="_blank" style="padding: 15px 35px; border: 1px solid #333; color: white; text-decoration: none; font-weight: bold; letter-spacing: 2px; font-size: 12px; transition: 0.3s;">DISCORD'A KATIL</a>
+        <p style="color: #444; letter-spacing: 8px; margin-top: 10px; font-size: 14px;">GÖLGE GİBİ GELİR, FIRTINA GİBİ GİDERİZ.</p>
+        
+        <div class="social-btns">
+            <a href="https://discord.gg/pGwxsx2Y" target="_blank" class="s-btn"><i class="fab fa-discord"></i> DISCORD</a>
+            <a href="https://www.youtube.com/@Musashi-Miyamato" target="_blank" class="s-btn"><i class="fab fa-youtube"></i> YOUTUBE</a>
         </div>
     </section>
 
     <div class="container" id="founders">
         <h2>KURUCULAR</h2>
         <div class="grid">
-            <div class="card">
-                <i class="fas fa-crown"></i>
-                <h3>hsmynova_</h3>
-                <span>ASIL KURUCU & LİDER</span>
-            </div>
-            <div class="card" style="border-bottom: 2px solid var(--red);">
-                <i class="fas fa-handshake"></i>
-                <h3>rolezoffical</h3>
-                <span>ORTAĞIM & KURUCU ORTAK</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-shield-halved"></i>
-                <h3>naqauel.</h3>
-                <span>KURUCU ORTAK</span>
-            </div>
-        </div>
-
-        <div class="staff-section">
-            <h3 style="letter-spacing: 5px; color: #222; font-size: 16px; margin-bottom: 10px;">AKTİF YETKİLİ KADROMUZ</h3>
-            <div class="staff-grid">
-                <div class="staff-tag"><b>#</b> Yetkili_Adi_1</div>
-                <div class="staff-tag"><b>#</b> Yetkili_Adi_2</div>
-                <div class="staff-tag"><b>#</b> Yetkili_Adi_3</div>
-                <div class="staff-tag"><b>#</b> Yetkili_Adi_4</div>
-            </div>
+            <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><span>ASIL KURUCU</span></div>
+            <div class="card" style="border-bottom: 2px solid var(--red);"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><span>ORTAĞIM</span></div>
+            <div class="card"><i class="fas fa-shield-halved"></i><h3>naqauel.</h3><span>KURUCU ORTAK</span></div>
         </div>
     </div>
 
-    <div class="container" id="rules" style="background: #030303;">
-        <h2>KANUNLARIMIZ</h2>
-        <div class="rules-list">
-            <div class="rule-item"><b>I.</b> Kardeşini savaşta asla yalnız bırakma.</div>
-            <div class="rule-item"><b>II.</b> Sadakat pazarlık konusu edilemez.</div>
-            <div class="rule-item"><b>III.</b> Hiyerarşi klanın temel direğidir.</div>
-            <div class="rule-item"><b>IV.</b> Haklıyı savunmak, haksıza Beddua olmaktır görevimiz.</div>
+    <div class="container" id="support" style="background: #030303;">
+        <h2>İLETİŞİM</h2>
+        <div style="max-width: 600px; margin: 0 auto;">
+            <input type="text" id="dcName" placeholder="Discord Adın" style="background:#000; border:1px solid #222; padding:20px; color:#fff; width:100%; margin-bottom:15px; font-family: inherit;">
+            <textarea id="dcMessage" rows="5" placeholder="Mesajın..." style="background:#000; border:1px solid #222; padding:20px; color:#fff; width:100%; margin-bottom:15px; font-family: inherit;"></textarea>
+            <button onclick="sendToDiscord()" style="background:var(--red); color:#fff; border:none; padding:20px; width:100%; font-weight:900; cursor:pointer; letter-spacing:2px; font-family: inherit;">GÖNDER</button>
         </div>
     </div>
 
-    <div class="signature-box">
-        <p class="signature-text">"Unutmayın; kurucu ile üye arasındaki tek fark <span>roldür</span>. Biz bir <span>aileyiz</span>."</p>
-    </div>
-
-    <div class="container" id="support">
-        <h2>DESTEK</h2>
-        <div class="support-form">
-            <input type="text" id="dcName" placeholder="Discord Adın">
-            <textarea id="dcMessage" rows="5" placeholder="Mesajın veya talebin nedir?"></textarea>
-            <button class="btn-send" id="submitBtn" onclick="sendToDiscord()">TALEBİ İLET</button>
-        </div>
-    </div>
-
-    <footer>BEDDUA CLAN &copy; 2026 | SÜRPRIZ PROJE</footer>
+    <footer>BEDDUA CLAN &copy; 2026</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
         /* new Crate({
-            server: 'SERVER_ID_BURAYA', 
-            channel: 'CHANNEL_ID_BURAYA'
-        })
+            server: 'SUNUCU_ID_BURAYA',
+            channel: 'KANAL_ID_BURAYA'
+        }) 
         */
     </script>
 
     <script>
-        // MOUSE TAKİP
         const blur = document.getElementById("cursor-blur");
         window.addEventListener("mousemove", (e) => {
             blur.style.left = e.clientX + "px";
             blur.style.top = e.clientY + "px";
         });
 
-        // PRELOADER
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('preloader-hidden');
-            }, 3500);
+            setTimeout(() => { document.getElementById('preloader').classList.add('preloader-hidden'); }, 3500);
         });
 
         async function sendToDiscord() {
             const webhookURL = "https://discord.com/api/webhooks/1490661782291746877/BeRBuYuXDkU94LFQSI-mqEw9BOau0Lcv6nGku6R_yODg_7AZ7Jt2ecIq3IFK8UPJlMzG";
             const name = document.getElementById('dcName').value;
             const message = document.getElementById('dcMessage').value;
-            const btn = document.getElementById('submitBtn');
+            if(!name || !message) return alert("Boş bırakma!");
 
-            if(!name || !message) return alert("Bilgileri doldur kanka!");
-
-            btn.disabled = true;
-            btn.innerText = "İLETİLİYOR...";
-
-            const payload = {
-                username: "Beddua Web",
-                embeds: [{
-                    title: "🚀 Yeni Yetkili/Destek Mesajı",
-                    color: 16711680,
-                    fields: [
-                        { name: "👤 Gönderen", value: name, inline: true },
-                        { name: "💬 Mesaj", value: message }
-                    ]
-                }]
-            };
-
-            try {
-                await fetch(webhookURL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                alert("Mesajın başarıyla iletildi!");
-                document.getElementById('dcName').value = "";
-                document.getElementById('dcMessage').value = "";
-            } catch (err) {
-                alert("Bir hata oluştu.");
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "TALEBİ İLET";
-            }
+            await fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    embeds: [{ title: "Yeni Bildirim", color: 16711680, fields: [{name:"Kimden", value:name}, {name:"İçerik", value:message}] }]
+                })
+            });
+            alert("İletildi!");
         }
     </script>
 </body>
